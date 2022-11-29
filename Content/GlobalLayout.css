@@ -1,0 +1,250 @@
+@media screen and (max-width: 361px) {
+    form {
+        width: 100% !important;
+        padding: 2rem !important;
+        margin-top: 0!important;
+    }
+
+    #info_Name {
+        display: none;
+    }
+
+    #navButton {
+        font-size: 10px;
+    }
+
+    /*header文字大小*/
+    .header-content {
+        font-size: 14px !important;
+    }
+
+    .header-collapse {
+        font-size: 14px !important;
+    }
+
+
+    /*footer文字大小*/
+    .footer-content {
+        font-size: 14px !important;
+    }
+
+    #form_Content {
+        padding-top: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+@media screen and (min-width: 362px) and (max-width: 480px) {
+    form {
+        width: 100% !important;
+        padding: 2rem !important;
+        margin-top: 3% !important;
+        margin-bottom: 3% !important;
+    }
+
+    #info_Name {
+        display: none;
+    }
+
+    /*header文字大小*/
+    .header-content {
+        font-size: 16px !important;
+    }
+
+    .header-collapse {
+        font-size: 16px !important;
+    }
+
+    /*footer文字大小*/
+    .footer-content {
+        font-size: 16px !important;
+    }
+
+    #navButton {
+        font-size: 16px;
+    }
+
+    #form_Content {
+        padding-top: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    form {
+        width: 100% !important;
+        padding: 2rem !important;
+        margin-top: 3% !important;
+        margin-bottom: 3% !important;
+    }
+
+    #info_Name {
+        display: none;
+    }
+
+    /*header文字大小*/
+    .header-content {
+        font-size: 20px !important;
+    }
+
+    .header-collapse {
+        font-size: 18px !important;
+    }
+
+    /*footer文字大小*/
+    .footer-content {
+        font-size: 18px !important;
+    }
+
+    #form_Content {
+        padding-top: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    form {
+        width: 90% !important;
+        padding: 2rem !important;
+        margin-top: 3% !important;
+        margin-bottom: 3% !important;
+    }
+
+    #info_Name {
+        display: none;
+    }
+
+    /*header文字大小*/
+    .header-content {
+        font-size: 20px !important;
+    }
+
+    .header-collapse {
+        font-size: 18px !important;
+    }
+
+    /*footer文字大小*/
+    .footer-content {
+        font-size: 18px !important;
+    }
+
+    #form_Content {
+        padding-top: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+* {
+    font-family: arial,"Microsoft JhengHei","微軟正黑體",sans-serif !important;
+}
+
+body {
+    background-color: #D3D3D3 !important;
+}
+
+/*
+p {
+  font-size: 1.3125rem;
+  /*font-weight: 700;
+  color: #222;
+  margin-bottom: 5rem;
+}
+    */
+
+form {
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    background: #fff;
+    padding: 4rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1.8rem rgba(0, 0, 0, 0.15);
+    position: relative;
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+}
+
+label {
+  width: 100%;
+  color: #777;
+  align-self: flex-start;
+  transition: 0.15s linear;
+}
+
+input {
+  font-size: 1.1875rem;
+  color: #404040;
+  padding: 1rem 0 0.5rem 0;
+  width: 100%;
+  border: none;
+  border-color: #a0a0a0;
+  border-bottom-width: 1px;
+  border-bottom-style: dotted;
+  transition: 0.15s linear;
+}
+
+.button {
+  font-size: 0.8125rem;
+  line-height: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  width: 100%;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  transition: 0.25s;
+}
+
+button:hover,
+button:focus {
+  outline: none;
+}
+
+/*Loading icon CSS*/
+#loader {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+    background-color: #E2E2E2;
+    z-index: 99;
+}
+
+#loader-image {
+    z-index: 100;
+}
+
+footer {
+    font-size: 18px;
+}
+
+#navBar > ul {
+    margin-right: auto;
+}
+
+#navBar > ul > li {
+    text-align: center;
+}
+
+#logout_Btn {
+    margin: auto;
+    display: block;
+}
+
+#navButton {
+    border: none;
+}

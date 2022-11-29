@@ -1,0 +1,669 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3A041FCD-B4CB-46FC-A445-4288E9BDA1BB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NCUT系統開發案</RootNamespace>
+    <AssemblyName>NCUT系統開發案</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44340</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.3</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itextsharp.xmlworker.5.5.13.3\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.TelemetryCorrelation.1.0.8\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=3.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Azure.KeyVault.Core.3.0.5\lib\net461\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Storage.Blob, Version=11.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Azure.Storage.Blob.11.2.3\lib\net452\Microsoft.Azure.Storage.Blob.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Storage.Common, Version=11.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Azure.Storage.Common.11.2.3\lib\net452\Microsoft.Azure.Storage.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.Azure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Configuration.ConfigurationBuilders.Azure.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.Azure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.Base, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Configuration.ConfigurationBuilders.Base.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.WindowsAzure.ConfigurationManager.3.2.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=9.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\WindowsAzure.Storage.9.3.3\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.9\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="jose-jwt">
+      <HintPath>packages\jose-jwt.4.0.1\lib\net472\jose-jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Abstractions">
+      <HintPath>packages\Microsoft.IdentityModel.Abstractions.6.25.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client">
+      <HintPath>packages\Microsoft.Identity.Client.4.48.1\lib\net461\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client.Extensions.Msal">
+      <HintPath>packages\Microsoft.Identity.Client.Extensions.Msal.2.25.0\lib\net45\Microsoft.Identity.Client.Extensions.Msal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word">
+      <HintPath>packages\Microsoft.Office.Interop.Word.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime">
+      <HintPath>packages\Microsoft.Rest.ClientRuntime.2.3.24\lib\net461\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure">
+      <HintPath>packages\Microsoft.Rest.ClientRuntime.Azure.3.3.19\lib\net461\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite">
+      <HintPath>packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.7.0.0\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives">
+      <HintPath>packages\Microsoft.Extensions.Primitives.7.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.7.0.0\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>packages\Microsoft.ApplicationInsights.2.21.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>packages\Microsoft.ApplicationInsights.DependencyCollector.2.21.0\lib\net452\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.21.0\lib\net452\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.21.0\lib\net452\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>packages\Microsoft.ApplicationInsights.WindowsServer.2.21.0\lib\net452\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>packages\Microsoft.ApplicationInsights.Web.2.21.0\lib\net452\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Hashing">
+      <HintPath>packages\System.IO.Hashing.7.0.0\lib\net462\System.IO.Hashing.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.ProtectedData">
+      <HintPath>packages\System.Security.Cryptography.ProtectedData.7.0.0\lib\net462\System.Security.Cryptography.ProtectedData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web">
+      <HintPath>packages\System.Text.Encodings.Web.7.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.7.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options">
+      <HintPath>packages\Microsoft.Extensions.Options.7.0.0\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>packages\SharpZipLib.1.4.1\lib\netstandard2.0\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
+      <HintPath>packages\Microsoft.Extensions.Configuration.Abstractions.7.0.0\lib\net462\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration">
+      <HintPath>packages\Microsoft.Extensions.Configuration.7.0.0\lib\net462\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder">
+      <HintPath>packages\Microsoft.Extensions.Configuration.Binder.7.0.0\lib\net462\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json">
+      <HintPath>packages\System.Text.Json.7.0.0\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory.Data">
+      <HintPath>packages\System.Memory.Data.7.0.0\lib\net462\System.Memory.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Core">
+      <HintPath>packages\Azure.Core.1.26.0\lib\net461\Azure.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Identity">
+      <HintPath>packages\Azure.Identity.1.8.0\lib\netstandard2.0\Azure.Identity.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Security.KeyVault.Keys">
+      <HintPath>packages\Azure.Security.KeyVault.Keys.4.4.0\lib\netstandard2.0\Azure.Security.KeyVault.Keys.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Security.KeyVault.Secrets">
+      <HintPath>packages\Azure.Security.KeyVault.Secrets.4.4.0\lib\netstandard2.0\Azure.Security.KeyVault.Secrets.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Storage.Common">
+      <HintPath>packages\Azure.Storage.Common.12.13.0\lib\netstandard2.0\Azure.Storage.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Storage.Blobs">
+      <HintPath>packages\Azure.Storage.Blobs.12.14.1\lib\netstandard2.0\Azure.Storage.Blobs.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Storage.Files.Shares">
+      <HintPath>packages\Azure.Storage.Files.Shares.12.12.1\lib\netstandard2.0\Azure.Storage.Files.Shares.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Storage.Queues">
+      <HintPath>packages\Azure.Storage.Queues.12.12.0\lib\netstandard2.0\Azure.Storage.Queues.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Azure">
+      <HintPath>packages\Microsoft.Extensions.Azure.1.6.0\lib\netstandard2.0\Microsoft.Extensions.Azure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ApplyController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Models\AdminModel.cs" />
+    <Compile Include="Models\BulletinBoardModel.cs" />
+    <Compile Include="Models\DownloadModel.cs" />
+    <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\form.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FormModel.cs" />
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\JwtObject.cs" />
+    <Compile Include="Security\JwtService.cs" />
+    <Compile Include="Service\AdminDBService.cs" />
+    <Compile Include="Service\BlobService.cs" />
+    <Compile Include="Service\ConsoleDBService.cs" />
+    <Compile Include="Service\HomepageDBService.cs" />
+    <Compile Include="Service\MailService.cs" />
+    <Compile Include="Service\MembersDBService.cs" />
+    <Compile Include="Service\FormDBService.cs" />
+    <Compile Include="ViewModel\MembersLoginViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Admin\Settings.css" />
+    <Content Include="Content\Apply\form.css" />
+    <Content Include="Content\Admin\Console.css" />
+    <Content Include="Content\Apply\OrderComplete.css" />
+    <Content Include="Content\Homepage\History.css" />
+    <Content Include="Content\Homepage\HomePage.css" />
+    <Content Include="Content\GlobalLayout.css" />
+    <Content Include="Content\Login\Login.css" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Pictures\checked.png" />
+    <Content Include="Pictures\loading_icon.gif" />
+    <Content Include="Scripts\Admin\Console.js" />
+    <Content Include="Scripts\Admin\preview.js" />
+    <Content Include="Scripts\Admin\Settings.js" />
+    <Content Include="Scripts\Apply\form.js" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Apply\ordercomplete.js" />
+    <Content Include="Scripts\Dis_Info.js" />
+    <Content Include="Scripts\Homepage\History.js" />
+    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
+    <Content Include="Scripts\Homepage\homepage.js" />
+    <Content Include="Scripts\jquery-3.6.0.js" />
+    <Content Include="Scripts\jquery.min.map" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\Layout.js" />
+    <Content Include="Scripts\Login\Login.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\EmailComplete_Template.html" />
+    <Content Include="Views\Shared\EmailReject_Template.html" />
+    <Content Include="Views\Shared\EmailAdmin_Template.html" />
+    <Content Include="Views\admin\settings.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\tinymce_jquery_full.cshtml" />
+    <Content Include="Views\error\notfound.cshtml" />
+    <Content Include="Views\admin\history.cshtml" />
+    <Content Include="Views\home\pasthistory.cshtml" />
+    <Content Include="Views\apply\ordercomplete.cshtml" />
+    <Content Include="Views\admin\preview.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\login\login.cshtml" />
+    <Content Include="Views\home\homepage.cshtml" />
+    <Content Include="Views\home\currenthistory.cshtml" />
+    <Content Include="Views\apply\form.cshtml" />
+    <Content Include="Views\admin\console.cshtml" />
+    <Content Include="Views\Shared\EmailNotify_Template.html" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\tinymce %28copy%29\icons\default\icons.js" />
+    <Content Include="Scripts\tinymce %28copy%29\icons\default\icons.min.js" />
+    <None Include="Scripts\tinymce %28copy%29\langs\README.md" />
+    <Content Include="Scripts\tinymce %28copy%29\models\dom\model.js" />
+    <Content Include="Scripts\tinymce %28copy%29\models\dom\model.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\advlist\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\advlist\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\anchor\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\anchor\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\autolink\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\autolink\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\autoresize\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\autoresize\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\autosave\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\autosave\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\bbcode\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\bbcode\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\charmap\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\charmap\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\code\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\code\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\codesample\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\codesample\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\colorpicker\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\colorpicker\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\contextmenu\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\contextmenu\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\directionality\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\directionality\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\emoticons\js\emojiimages.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\emoticons\js\emojiimages.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\emoticons\js\emojis.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\emoticons\js\emojis.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\emoticons\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\emoticons\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\fullpage\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\fullpage\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\fullscreen\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\fullscreen\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\help\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\help\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\hr\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\hr\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\image\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\image\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\imagetools\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\imagetools\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\importcss\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\importcss\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\insertdatetime\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\legacyoutput\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\link\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\link\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\lists\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\lists\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\media\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\media\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\nonbreaking\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\noneditable\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\noneditable\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\pagebreak\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\pagebreak\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\paste\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\paste\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\preview\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\preview\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\print\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\print\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\quickbars\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\quickbars\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\save\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\save\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\searchreplace\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\searchreplace\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\spellchecker\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\spellchecker\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\tabfocus\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\tabfocus\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\table\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\table\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\template\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\template\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\textcolor\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\textcolor\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\textpattern\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\textpattern\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\toc\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\toc\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\visualblocks\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\visualblocks\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\visualchars\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\visualchars\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\wordcount\plugin.js" />
+    <Content Include="Scripts\tinymce %28copy%29\plugins\wordcount\plugin.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\content\dark\content.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\content\dark\content.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\content\default\content.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\content\default\content.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\content\document\content.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\content\document\content.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\content\tinymce-5\content.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\content\tinymce-5\content.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\content\tinymce-5-dark\content.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\content\tinymce-5-dark\content.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\content\writer\content.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\content\writer\content.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide\content.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide\content.inline.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide\content.inline.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide\content.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide\content.mobile.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide\content.mobile.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide\fonts\tinymce-mobile.woff" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide\skin.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide\skin.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide\skin.mobile.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide\skin.mobile.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide\skin.shadowdom.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide\skin.shadowdom.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide-dark\content.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide-dark\content.inline.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide-dark\content.inline.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide-dark\content.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide-dark\content.mobile.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide-dark\content.mobile.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide-dark\fonts\tinymce-mobile.woff" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide-dark\skin.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide-dark\skin.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide-dark\skin.mobile.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide-dark\skin.mobile.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide-dark\skin.shadowdom.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\oxide-dark\skin.shadowdom.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\tinymce-5\content.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\tinymce-5\content.inline.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\tinymce-5\content.inline.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\tinymce-5\content.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\tinymce-5\skin.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\tinymce-5\skin.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\tinymce-5\skin.shadowdom.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\tinymce-5\skin.shadowdom.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\tinymce-5-dark\content.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\tinymce-5-dark\content.inline.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\tinymce-5-dark\content.inline.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\tinymce-5-dark\content.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\tinymce-5-dark\skin.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\tinymce-5-dark\skin.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\tinymce-5-dark\skin.shadowdom.css" />
+    <Content Include="Scripts\tinymce %28copy%29\skins\ui\tinymce-5-dark\skin.shadowdom.min.css" />
+    <Content Include="Scripts\tinymce %28copy%29\themes\mobile\theme.js" />
+    <Content Include="Scripts\tinymce %28copy%29\themes\mobile\theme.min.js" />
+    <Content Include="Scripts\tinymce %28copy%29\themes\silver\theme.js" />
+    <Content Include="Scripts\tinymce %28copy%29\themes\silver\theme.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\tinymce %28copy%29\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54785</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44340/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+    <MonoDevelop>
+      <Properties>
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此專案參考這部電腦上所缺少的 NuGet 套件。請啟用 NuGet 套件還原，以下載該套件。如需詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的檔案是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Import Project="packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('packages\Microsoft.TypeScript.MSBuild.4.9.3\build\Microsoft.TypeScript.MSBuild.targets')" />
+  <Import Project="packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+  <Import Project="packages\Microsoft.ApplicationInsights.DependencyCollector.2.21.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets" Condition="Exists('packages\Microsoft.ApplicationInsights.DependencyCollector.2.21.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" />
+  <Import Project="packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.21.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets" Condition="Exists('packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.21.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" />
+  <Import Project="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.21.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.21.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
+  <Import Project="packages\Microsoft.ApplicationInsights.WindowsServer.2.21.0\build\Microsoft.ApplicationInsights.WindowsServer.targets" Condition="Exists('packages\Microsoft.ApplicationInsights.WindowsServer.2.21.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" />
+  <Import Project="packages\Microsoft.ApplicationInsights.Web.2.21.0\build\Microsoft.ApplicationInsights.Web.targets" Condition="Exists('packages\Microsoft.ApplicationInsights.Web.2.21.0\build\Microsoft.ApplicationInsights.Web.targets')" />
+  <Import Project="packages\TinyMCE.6.3.0\build\TinyMCE.targets" Condition="Exists('packages\TinyMCE.6.3.0\build\TinyMCE.targets')" />
+</Project>

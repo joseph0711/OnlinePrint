@@ -1,0 +1,302 @@
+﻿section {
+    background: #fff;
+    border-radius: 0.5rem;
+    margin: 25px auto;
+}
+
+#rejectForm {
+    margin-top: 12%;
+    box-shadow: 0 0 1.8rem rgb(0 0 0 / 15%);
+    padding: 0;
+    width: 100%;
+}
+
+#add_on, #auth, #memo, #apply_memo, #printInfo {
+    background-color: #D3D3D3;
+    height: 100%;
+}
+
+table {
+    text-align: center;
+    vertical-align: middle;
+}
+
+td {
+    background-color: #fff !important;
+    font-size: 18px;
+}
+
+th {
+    font-size: 20px;
+}
+
+ul {
+    padding: .375rem .75rem .375rem 30px;
+    border-radius: .25rem;
+}
+
+#Console, #m_Console {
+    width: 100%;
+    margin-bottom: 2.5%;
+}
+
+h5 {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+@media screen and (min-width: 300px) and (max-width: 330px) {
+    tr > th, tr > td {
+        font-size: 16px !important;
+    }
+
+    .modal-xl {
+        max-width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 424px) {
+    #applyDate, #print_Kind, #auth_Person {
+        display: none;
+    }
+
+    #applyDate_Content, #print_Kind_Content, #auth_Person_Content {
+        display: none;
+    }
+
+    table.dataTable thead th {
+        padding: 10px 0px !important;
+    }
+
+    /*平板&電腦版版面*/
+    #m_Console, #m_console_Upper, #m_console_Upper_Cont {
+        display: none;
+    }
+
+    /*手機板版面*/
+    #m_console_xs, #m_console_Upper_xs {
+        display: block !important;
+    }
+
+    .modal-xl {
+        max-width: 100% !important;
+    }
+
+    tr > th, tr > td {
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (min-width: 425px) and (max-width: 480px) {
+    #applyDate, #print_Kind, #auth_Person {
+        display: none;
+    }
+
+    #applyDate_Content, #print_Kind_Content, #auth_Person_Content {
+        display: none;
+    }
+
+    /*平板&電腦版版面*/
+    #m_Console, #m_console_Upper, #m_console_Upper_Cont {
+        display: none;
+    }
+
+    /*手機板版面*/
+    #m_console_xs, #m_console_Upper_xs {
+        display: block !important;
+    }
+
+    .modal-xl {
+        max-width: 100% !important;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+    #print_Kind, #auth_Person {
+        display: none;
+    }
+
+    #print_Kind_Content, #auth_Person_Content {
+        display: none;
+    }
+
+    #modal_Content {
+        max-width: 95% !important;
+    }
+
+    tr > th {
+        font-size: 18px;
+    }
+
+    section {
+        max-width: 95% !important;
+    }
+
+    table.dataTable thead th {
+        padding: 10px 0px !important;
+    }
+
+    /*平板&電腦版版面*/
+    #m_Console, #m_console_Upper, #m_console_Upper_Cont {
+        display: none;
+    }
+
+    /*手機板版面*/
+    #m_console_xs, #m_console_Upper_xs {
+        display: block !important;
+    }
+
+    .modal-xl {
+        max-width: 75% !important;
+        margin: 1.75rem auto
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 883px) {
+    #auth_Person {
+        display: none;
+    }
+
+    #auth_Person_Content {
+        display: none;
+    }
+
+    #modal_Content {
+        max-width: 95% !important;
+    }
+
+    section {
+        max-width: 95% !important;
+    }
+
+    tr > th {
+        font-size: 18px;
+    }
+
+    /*平板&電腦版版面*/
+    #m_Console, #m_console_Upper, #m_console_Upper_Cont {
+        display: none;
+    }
+
+    /*手機板版面*/
+    #m_console_xs, #m_console_Upper_xs {
+        display: block !important;
+    }
+
+    .modal-xl {
+        max-width: 60% !important;
+    }
+}
+
+@media screen and (min-width: 884px) and (max-width: 992px) {
+
+    #auth_Person {
+        display: none;
+    }
+
+    #auth_Person_Content {
+        display: none;
+    }
+
+    /*平板&電腦版版面*/
+    #m_Console, #m_console_Upper, #m_console_Upper_Cont {
+        display: none;
+    }
+
+    /*手機板版面*/
+    #m_console_xs, #m_console_Upper_xs {
+        display: block !important;
+    }
+
+    .modal-xl {
+        max-width: 60% !important;
+    }
+}
+
+@media screen and (min-width: 993px) and (max-width: 1383px) {
+    .modal-xl {
+        max-width: 100% !important;
+    }
+
+    .table > :not(caption) > * > * {
+        padding: .5rem 2.5px;
+    }
+}
+
+@media screen and (min-width: 1384px) and (max-width: 1500px){
+    .modal-xl {
+        max-width: 90% !important;
+    }
+}
+
+@media screen and (min-width: 1501px) and (max-width: 2000px){
+    .modal-xl {
+        max-width: 80% !important;
+    }
+}
+
+/*data table隱藏項目*/
+.dataTables_length {
+    display: none;
+}
+
+.dataTables_info {
+    display: none;
+}
+
+#Apply_Form_paginate {
+    display: none;
+}
+
+/*根據螢幕大小輸出不同畫面*/
+#m_console_xs, #m_console_Upper_xs {
+    display: none;
+}
+
+#m_console_xs > table > tbody > tr > th {
+    text-align: left;
+}
+
+.modal-dialog {
+    margin-top: 0px;
+}
+
+.modal-xl {
+    max-width: 60%;
+}
+
+#m_console_Upper_xs > div > ul > li {
+    margin-left: 25px;
+}
+
+/*Loading animation CSS*/
+@keyframes loader-animation {
+    0% {
+        left: -100%;
+    }
+
+    50% {
+        left: 100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+.loader {
+    height: 5px;
+    width: 100%;
+    overflow: hidden;
+    display: none;
+}
+
+    .loader .bar {
+        position: relative;
+        height: 5px;
+        width: 100%;
+        background-color: dodgerblue;
+        animation-name: loader-animation;
+        animation-duration: 2.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;

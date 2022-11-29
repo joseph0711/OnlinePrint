@@ -1,0 +1,328 @@
+﻿@model OnlinePrint.Models.FormModels
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>申請 - 線上列印申請系統</title>
+
+    <!--BS5 CDN-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--JQ UI css & js CDN-->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!--JQ validation-->
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+
+    <!--timepicker js CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.css" rel="stylesheet" />
+
+    <!--Font awesome CDN-->
+    <script src="https://kit.fontawesome.com/2ec7e4847b.js" crossorigin="anonymous"></script>
+    <link href="~/Content/Apply/form.css" rel="stylesheet" />
+</head>
+
+<body class="d-flex flex-column min-vh-10">
+    <input type="hidden" id="hdnToken" value="@ViewBag.Token" />
+    <header>
+        <nav class="navbar navbar-dark navbar-fixed-top navbar-inverse navbar-expand-lg" style="background-color: #343A40">
+            <div class="container">
+                <p class="navbar-brand" style="color: white; margin: 0" id="navbar">
+                    線上列印申請系統
+                </p>
+            </div>
+        </nav>
+    </header>
+
+    <div id="liveAlertPlaceholder"></div>
+
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <form action="Upload" method="post" id="form" enctype="multipart/form-data" class="needs-validation" novalidate style="margin-top: 0" autocomplete="off">
+                    <div class="form-row">
+                        <h1 id="title">列印申請</h1>
+                        <p style="font-size: 18px" id="name">申請人：@ViewBag.username</p>
+                        <p style="font-size: 18px" id="login_Time">登入時間：@ViewBag.loginTime</p>
+                        <p style="font-size: 18px" id="department">系所：@ViewBag.department</p>
+
+                        <hr style="margin: 25px 0px">
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 mb-3">
+                            <h3><b>基本資料</b></h3>
+
+                            <label>科目</label>
+                            @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", required = "required", id = "subject", name = "subject", Value = TempData["subject"] })
+                            <div class="invalid-feedback">
+                                請填寫科目
+                            </div>
+                            <div id="subjectInvalid"></div>
+                        </div>
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 mb-3">
+                            <label>印製種類</label>
+                            @Html.DropDownListFor(model => model.Print_Kind, (IEnumerable<SelectListItem>)ViewBag.SelectList, new { @class = "form-control form-select", required = "required", id = "printKind" })
+                            <div class="invalid-feedback">
+                                請填寫印製種類
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 mb-3" id="auth_phone">
+                            <label>連絡電話</label>
+                            @Html.TextBoxFor(model => model.phone, new { @class = "form-control", required = "required", id = "phone", name = "phone", Value = TempData["phone"], placeholder = "0912-345-678" })
+                            <div class="invalid-feedback">
+                                請填寫連絡電話
+                            </div>
+                            <div id="phoneInvalid"></div>
+                        </div>
+
+                        <hr style="margin: 25px 0px">
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 mb-3">
+                            <h3><b>領取資料</b></h3>
+                            <label>領取日期</label>
+                            <!--modal-->
+                            <button type="button" data-toggle="modal" data-target="#date_Detail" role="button" onclick="Modal_Date_Detail();" id="timeDate_info">
+                                <i class="fa-solid fa-circle-info" style="font-size: 26px"></i>
+                            </button>
+                            <input class="form-control" type="text" id="pickUp_Date" asp-for="FormModel.PickUp_Date" name="PickUp_Date" value="@TempData["pickUp_Date"]" required placeholder="YYYY-MM-DD">
+                            <div class="invalid-feedback">
+                                請輸入領取日期
+                            </div>
+                            <div class="messages"></div>
+
+                            <!--modal UI -->
+                            <div class="modal fade" tabindex="-1" id="date_Detail" aria-hidden="true" aria-labelledby="exampleModalToggleLabel">
+                                <div class="modal-dialog modal-sm modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" style="font-weight: bold">領取時間日期規則</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+
+                                        <div class="modal-body" style="text-align: center" id="m_timeDate">
+                                            <div style="display: inline">
+                                                <p>※領取日期規則：<br />日期至少需填寫申請日的隔天。<br />若要當日領取，請至臨櫃辦理。</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label style="margin-top: 4.5%">領取時間</label>
+                            <!--modal-->
+                            <button type="button" data-toggle="modal" data-target="#time_Detail" role="button" onclick="Modal_Time_Detail();" id="timeDate_info">
+                                <i class="fa-solid fa-circle-info" style="font-size: 26px"></i>
+                            </button>
+
+                            <input class="form-control" type="text" id="pickUp_Time" asp-for="FormModel.PickUp_Time" name="PickUp_Time" value="@TempData["pickUp_Time"]" required placeholder="HH:MM">
+                            <div class="invalid-feedback">
+                                請輸入領取時間
+                            </div>
+                            <div class="messages"></div>
+
+                            <!--modal UI -->
+                            <div class="modal fade" tabindex="-1" id="time_Detail" aria-hidden="true" aria-labelledby="exampleModalToggleLabel">
+                                <div class="modal-dialog modal-sm modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" style="font-weight: bold">領取時間日期規則</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+
+                                        <div class="modal-body" style="text-align: center" id="m_timeDate">
+                                            <div style="display: inline">
+                                                <p>※領取時間規則：<br />早上八點至下午五點<br />8:00 - 17:00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr style="margin: 25px 0px">
+
+                    <div class="form-row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 mb-3">
+                            <h3><b>列印資料</b></h3>
+                            <label>列印張數</label>
+                           
+                            <div class="row form-group" style="margin-top: 5px">
+                                <div class="col-12 col-md-12">
+                                    <div class="control-group" id="fields">
+                                        <div class="controls">
+                                            <div class="entry input-group upload-input-group" id="print_NumDiv1">
+                                                @Html.TextBoxFor(model => model.Print_Num, new { @type = "number", @class = "form-control", @min = "1", @max = "200", required = "required", id = "print_Num", name = "print_Num", Value = TempData["print_Num"] })
+                                                <p id="testPaperNumInfo">張</p>
+
+                                                <div class="invalid-feedback">
+                                                    請填寫列印張數
+                                                </div>
+
+                                                <div id="printNumInvalid"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 mb-3">
+                            <label>列印紙張單雙面</label>
+                            @Html.DropDownListFor(model => model.Print_Side, (IEnumerable<SelectListItem>)ViewBag.SelectList, new { @class = "form-control form-select", required = "required", id = "print_Side" })
+                            <div class="invalid-feedback">
+                                請填寫列印紙張單雙面
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 mb-3">
+                            <label>列印紙張規格</label>
+                            @Html.DropDownListFor(model => model.Print_Size, (IEnumerable<SelectListItem>)ViewBag.SelectList, new { @class = "form-control form-select", required = "required", id = "print_Size" })
+                            <div class="invalid-feedback">
+                                請填寫列印紙張規格
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 mb-3">
+                            <label>其他需求</label>
+                            <div class="form-check" style="margin-bottom: 6%; display: table; width: 100%">
+                                <div style="margin: 15px 3px;">
+                                    @if ((string)TempData["add_Package"] == "yes")
+                                    {
+                                        @Html.CheckBoxFor(model => model.add_Package, new { @class = "form-check-input", @checked = "checked", style = "margin-top: 0 !important;", id = "add_Package" })
+                                    }
+                                    else
+                                    {
+                                        @Html.CheckBoxFor(model => model.add_Package, new { @class = "form-check-input", style = "margin-top: 0 !important;", id = "add_Package" })
+                                    }
+
+                                    <label class="form-check-label" style="color: black">
+                                        試卷袋
+                                    </label>
+                                </div>
+
+                                <div style="margin: 0px 3px;">
+                                    <span>
+                                        @if ((string)TempData["add_AnswerPaper"] == "yes")
+                                        {
+                                            @Html.CheckBoxFor(model => model.add_AnswerPaper, new { @class = "form-check-input", @checked = "checked", id = "add_AnswerPaper", style = "margin-top: 0 !important;" })
+                                        }
+                                        else
+                                        {
+                                            @Html.CheckBoxFor(model => model.add_AnswerPaper, new { @class = "form-check-input", id = "add_AnswerPaper", style = "margin-top: 0 !important;" })
+                                        }
+                                        <label class="form-check-label" style="color: black; float: left; margin-right: 10px">
+                                            作答卷
+                                        </label>
+                                    </span>
+
+                                    <span>
+                                        <label class="form-check-label" style="color: black; float: left">
+                                            張數：
+                                        </label>
+                                        @if (TempData["ansPaperNum"] == null || (int)TempData["ansPaperNum"] == 0)
+                                        {
+                                            <span style="float: left; display: block;">
+                                                @Html.TextBoxFor(model => model.add_AnsPaperNum, new { @type = "number", @class = "datafield form-control", required = "required", @min = "1", @max = "100", id = "ansPaperNum", disabled = "disabled", style = "height: 25%" })
+                                            </span>
+
+                                        }
+                                        else
+                                        {
+                                            <span style="float: left; display: block;">
+                                                @Html.TextBoxFor(model => model.add_AnsPaperNum, new { @type = "number", @class = "datafield form-control", required = "required", @min = "1", @max = "100", id = "ansPaperNum", Value = TempData["ansPaperNum"], style = "height: 25%" })
+                                            </span>
+                                        }
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 mb-3">
+                        <label>檔案上傳處<strong id="upload_Info"> (可接受檔案規格：.pdf)</strong></label>
+                        <div class="row form-group">
+                            <div class="col-12 col-md-12">
+                                <div class="control-group" id="fields">
+                                    <div class="controls">
+                                        <input class="form-control" name="file" type="file" id="uploadFile1" required style="border-radius: 0.25rem !important;">
+
+                                        <div class="invalid-feedback">
+                                            請上傳檔案！
+                                        </div>
+                                    </div>
+
+                                    <div style="color: red; font-size: 16px;">
+                                        <p style="text-align: left">@TempData["alert_MaxPage"]</p>
+                                        <p style="text-align: left">@TempData["alert_ErrorFormat"]</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 mb-3">
+                        <div class="form-group">
+                            <label>備註</label>
+                            @if (TempData["memo"] == null)
+                            {
+                                <textarea class="form-control" rows="3" asp-for="FormModel.Memo" name="Memo" placeholder='若有其他需求，可撰寫在此。'></textarea>
+                            }
+                            else
+                            {
+                                <textarea class="form-control" rows="3" asp-for="FormModel.Memo" name="Memo">@TempData["memo"]</textarea>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" required id="agreement" style="margin-top: 0px">
+                            <label class="form-check-label" id="submit_Info">
+                                我已確認表單資料皆以正確無誤，此申請表送出後不可更改。
+                            </label>
+                            <div class="invalid-feedback">
+                                請勾選同意準則
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <a class="btn btn-secondary btn_Cancel" style="width: 49%" name="btn_Cancel" href="@Url.Action("homepage", "home")">取消 </a>
+                    <input class="btn btn-primary btn_Submit" style="width: 49%" name="btn_Submit" id="btn_Submit" type="submit" value="送出" />
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!--Loding icon-->
+    <div id="loader" style="display: none">
+        <div>
+            <img id="loader-image" src="~/Pictures/loading_icon.gif" alt="Loading..." />
+        </div>
+
+        <div>
+            <label style="font-size: 30px; color: black">表單送出中</label>
+        </div>
+    </div>
+
+    <footer class="mt-auto text-center" style="background-color: #343A40">
+        <!-- Copyright -->
+        <div class="text-center p-3">
+            <span class="text-light">版權所有 © 2022 蔣宜哲</span>
+        </div>
+    </footer>
+
+    <script src="~/Scripts/Apply/form.js"></script>
+</body>
+</html>

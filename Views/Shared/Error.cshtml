@@ -1,0 +1,47 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>發生錯誤 - 線上影印申請系統</title>
+</head>
+
+<body>
+    <div class="container" style="text-align: center; margin-top: 25px;">
+        <h1 style="font-weight: bolder">
+            500
+        </h1>
+
+        <p style="font-size: 28px; color: red">
+            發生錯誤。請再試一次。
+        </p>
+
+        <p style="font-size: 20px;">
+            錯誤訊息如下，請將文字複製或畫面截圖給予開發人員。
+        </p>
+
+        @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
+        {
+            <div style="text-align: left;
+                        background: #fff; 
+                        box-shadow: 0 0 1.8rem rgba(0, 0, 0, 0.15);
+                        border-radius: 0.5rem;
+                        padding: 4rem;">
+                
+                <p>
+                    <b>Exception:</b> @Model.Exception.Message<br />
+                    <b>Controller:</b> @Model.ControllerName<br />
+                    <b>Action:</b> @Model.ActionName
+                </p>
+                <div style="overflow:scroll">
+                    <pre>
+                        @Model.Exception.StackTrace
+                    </pre>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>

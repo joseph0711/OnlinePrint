@@ -1,0 +1,15 @@
+﻿.content {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 25px;
+    box-shadow: 0 0 1.8rem rgb(0 0 0 / 15%);
+    border-radius: 0.5rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-weight: bold !important;
+}

@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <title>公佈欄預覽 - 線上列印申請系統</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/Content/Homepage/HomePage.css" rel="stylesheet" />
+    <script src="~/Scripts/Admin/preview.js"></script>
+</head>
+
+<body>
+    <input type="hidden" id="hdnToken" value="@ViewBag.Token" />
+    <div class="container side-collapse-container-left">
+        <div class="row">
+            <main class="el-main">
+                <div class="content" id="bulletin" style="background: #fff;">
+                    @Html.Raw(TempData["temp_Cont"])
+                </div>
+
+                <div style="float: right">
+                    <a class="btn btn-primary" href="@Url.Action("Settings", "admin")" onclick="history.go(-1);">上一步</a>
+                    @Html.ActionLink("確定上傳", "previewSettings", null,
+                    new { @class = "btn btn-danger" })
+                </div>
+            </main>
+        </div>
+    </div>
+</body>

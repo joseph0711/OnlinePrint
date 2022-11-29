@@ -1,0 +1,266 @@
+﻿@media screen and (max-width: 350px){
+    form {
+        width: 100% !important;
+        padding: 20px !important;
+    }
+
+    #title {
+        text-align: center;
+        font-weight: bold;
+    }
+    #name, #login_Time, #department {
+        text-align: center;
+    }
+
+    #upload_Info {
+        font-size: 14px !important;
+    }
+
+    #submit_Info, #mulFilesInfo {
+        font-size: 16px !important;
+    }
+
+    #navbar {
+        font-size: 16px !important;
+    }
+
+    footer {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (min-width: 351px) and (max-width: 390px) {
+    form {
+        padding: 20px !important;
+        width: 95% !important;
+    }
+
+    #title {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    #name, #login_Time, #department {
+        text-align: center;
+    }
+
+    #submit_Info {
+        font-size: 16px !important;
+    }
+
+    #upload_Info {
+        font-size: 14px !important;
+    }
+
+    #navbar {
+        font-size: 17px !important;
+    }
+
+    footer {
+        font-size: 17px !important;
+    }
+}
+
+@media screen and (min-width: 391px) and (max-width: 479px) {
+    form {
+        padding: 20px !important;
+        width: 95% !important;
+    }
+
+    #title {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    #name, #login_Time, #department {
+        text-align: center;
+    }
+
+    #submit_Info {
+        font-size: 16px !important;
+    }
+
+    #upload_Info {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+    form {
+        padding: 20px !important;
+        width: 95% !important;
+    }
+
+    #title {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    #name, #login_Time, #department {
+        text-align: center;
+    }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    form {
+        margin: 0;
+        width: 80% !important;
+    }
+
+    #title {
+        text-align: center;
+        font-weight: bold;
+    }
+    #name, #login_Time, #department {
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 993px) {
+    form h1 {
+        text-align: center;
+        font-size: 36px;
+        font-weight: bold;
+    }
+
+    form p {
+        border-bottom: 20px;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    #mulFilesInfo {
+        text-align: left!important;
+    }
+
+    form label {
+        font-size: 18px;
+    }
+}
+
+
+body {
+    font-family: arial,"Microsoft JhengHei","微軟正黑體",sans-serif !important;
+    background-color: #D3D3D3 !important;
+}
+
+form {
+    margin: 5% auto !important;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    background: #fff;
+    padding: 4rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1.8rem rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+
+input {
+    font-size: 1.1875rem;
+    color: #404040;
+    padding: 1rem 0 0.5rem 0;
+    width: 100%;
+    border: none;
+    border-color: #a0a0a0;
+    border-bottom-width: 1px;
+    border-bottom-style: dotted;
+    transition: 0.15s linear;
+}
+
+#timeDate_info, #printNum_Info {
+    border-radius: 4px;
+    border: none;
+    height: 32px;
+    width: 32px;
+    background-color: white;
+}
+
+/*upload css*/
+.card {
+    margin-top: 100px;
+}
+
+.btn-upload {
+    padding: 10px 20px;
+    margin-left: 10px !important;
+    border-radius: 0.25rem !important;
+}
+
+.upload-input-group {
+    margin-bottom: 10px;
+}
+
+/*Loading icon CSS*/
+#loader {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+    background-color: #E2E2E2;
+    z-index: 99;
+}
+
+#loader-image {
+    z-index: 100;
+}
+
+.messages {
+    margin: 10px 5px;
+    color: #dc3545
+}
+
+#upload_Info {
+    color: red;
+}
+
+#submit_Info {
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.form-check-input {
+    width: 1.2em;
+    height: 1.2em;
+}
+
+
+.invalid-feedback, #subjectInvalid, #auth_NameInvalid, #phoneInvalid {
+    font-size: 16px !important;
+    font-weight: bold;
+    color: #dc3545 !important;
+}
+
+#m_timeDate {
+    font-size: 18px;
+}
+
+#print_Num {
+    border-radius: 0.25rem !important;
+}
+
+#testPaperClass1, #testPaperClass2, #testPaperClass3, #testPaperClass4 {
+    position: relative;
+    padding: 7px 0;
+    margin: 0px 25px 0px 0px;
+    text-align: center;
+}
+
+#testPaperNumInfo {
+    position: relative;
+    padding: 7px 0;
+    margin: 0px 10px 0px 25px;
+    text-align: center;
+}
+
+#pickUp_Date {
+    margin-top: 5px;
+}

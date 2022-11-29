@@ -1,0 +1,105 @@
+﻿/*Loading animation CSS*/
+@keyframes loader-animation {
+    0% {
+        left: -100%;
+    }
+
+    50% {
+        left: 100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+.loader {
+    height: 5px;
+    width: 100%;
+    overflow: hidden;
+    display: none;
+}
+.loader .bar {
+    position: relative;
+    height: 5px;
+    width: 100%;
+    background-color: dodgerblue;
+    animation-name: loader-animation;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+#header_Login {
+    font-weight: 700;
+    text-align: center;
+}
+
+.separator {
+    margin: 18px 0px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #000;
+}
+
+.separator:not(:empty)::before {
+    margin-right: .25em;
+}
+
+.separator:not(:empty)::after {
+    margin-left: .25em;
+}
+
+#login {
+    font-size: 18px;
+}
+
+#code {
+    border: 1px solid;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+#captcha_ErrInfo, #loginErrMsg, #invalidAccount, #invalidPwd, #invalidCaptcha, #invalidOrder {
+    text-align: left;
+    color: #dc3545;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0 !important;
+    font-weight: bold;
+    font-size: 1em !important;
+}
+
+#login_Form {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#form_Content {
+    padding-top: 4rem ;
+    padding-left: 4rem ;
+    padding-right: 4rem;
+}
+
+.btn_Identity {
+    width: 49%;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.btnIdentity_Checked {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+#div_Login {
+    display: none;
+}

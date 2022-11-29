@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>已送出表單 - 線上列印申請系統</title>
+    <link href="~/Content/Apply/OrderComplete.css" rel="stylesheet" />
+    <script src="~/Scripts/Apply/ordercomplete.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <input type="hidden" id="hdnToken" value="@ViewBag.Token" />
+        @using (Html.BeginForm())
+        {
+            <div id="pic">
+                <img src="~/Pictures/checked.png" alt="Order Complete" />
+            </div>
+
+            <div id="content">
+                <h2 style="margin-bottom: 10px"><b>已送出表單</b></h2>
+                <p align="center" id="sid">表單流水號：@ViewBag.SID</p>
+
+                <p id="history_Link">點選<a href="@Url.Action("currenthistory", "home")">申請紀錄</a>即可觀看紀錄資訊。</p>
+            </div>
+        }
+    </div>
+</body>

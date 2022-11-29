@@ -1,0 +1,35 @@
+﻿form {
+    width: auto;
+    max-width: none;
+    padding: 25px;
+    margin-top: 3%;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 15%;
+    width: 15%;
+}
+
+#content > #sid {
+    font-size: 22px;
+}
+
+#content > #history_Link {
+    font-size: 18px;
+}
+
+
+div #pic {
+    margin-bottom: 30px
+}
+
+div #content {
+    text-align: center;
+}
+
+div span {
+    display: block;
+}

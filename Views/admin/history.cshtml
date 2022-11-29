@@ -1,0 +1,338 @@
+﻿@using OnlinePrint.Models
+@model OnlinePrint.Models.FormModels
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <title>歷史紀錄 - 線上列印申請系統</title>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/Admin/Console.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--font awesome v6.1.1 CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <input type="hidden" id="hdnToken" value="@ViewBag.Token" />
+    <section class="container">
+        <main class="el-main">
+            <div class="m-4">
+                <h2 style="margin-bottom: 20px"><b>歷史紀錄</b></h2>
+                <table id="Console" class="display responsive nowrap table" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th id="sid">流水號</th>
+                            <th id="applyDate">申請日期</th>
+                            <th id="print_Kind">印製種類</th>
+                            <th id="auth_Person">領取人</th>
+                            <th id="status">申請狀態</th>
+                            <th id="detail">詳細資料</th>
+                        </tr>
+                    </thead>
+                    @{
+                        List<FormModels> formData = ViewBag.formData;
+                        FormModels formModels = new FormModels();
+                    }
+
+                    @{
+                        for (int i = 0; i < formData.Count; i++)
+                        {
+                            <tbody>
+                                <tr>
+                                    <td id="sid_Content">@formData[i].SID</td>
+                                    <td id="applyDate_Content">@formData[i].Apply_Time</td>
+                                    <td id="print_Kind_Content">@formData[i].Print_Kind</td>
+                                    <td id="auth_Person_Content">@formData[i].Name</td>
+                                    <td>@formData[i].status</td>
+                                    <!--modal-->
+                                    <td>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailModal" role="button" onclick="showModal(@(i));">
+                                            <i class="fa-solid fa-info"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        }
+                    }
+                </table>
+                @{
+                    for (int i = 0; i < formData.Count; i++)
+                    {
+                        <div class="modal fade" tabindex="-1" id="detailModal@(i)" aria-hidden="true" aria-labelledby="exampleModalToggleLabel">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title">詳細資料</h3>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <!--平板&電腦版版面-->
+                                        <table id="m_Console" class="table" style="width:100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th id="modal_Sid">流水號</th>
+                                                    <th id="modal_ApplyDate">申請日期</th>
+                                                    <th id="modal_Name">申請人</th>
+                                                    <th id="modal_Department">系所名稱</th>
+                                                    <th id="modal_Subject">科目</th>
+                                                    <th id="modal_Prt_Kind">印製種類</th>
+                                                    <th id="modal_Status">申請狀態</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td id="modal_Sid_Cont">@formData[i].SID</td>
+                                                    <td id="modal_ApplyDate_Cont">@formData[i].Apply_Time</td>
+                                                    <td id="modal_Name_Cont">@formData[i].Name</td>
+                                                    <td id="modal_Department_Cont">@formData[i].department</td>
+                                                    <td id="modal_Subject_Cont">@formData[i].Subject</td>
+                                                    <td id="modal_Prt_Kind_Cont">@formData[i].Print_Kind</td>
+                                                    <td>@formData[i].status</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!--其他資訊-->
+                                        <div class="row" id="m_console_Upper">
+                                            <div class="col">
+                                                <h5>
+                                                    列印規格
+                                                </h5>
+                                            </div>
+
+                                            <div class="col">
+                                                <h5>
+                                                    附加需求
+                                                </h5>
+                                            </div>
+
+                                            <div class="col">
+                                                <h5>
+                                                    領取資訊
+                                                </h5>
+                                            </div>
+
+                                            <div class="col">
+                                                <h5>
+                                                    使用者備註
+                                                </h5>
+                                            </div>
+
+                                            <div class="col">
+                                                <h5>
+                                                    檔案下載處
+                                                    <i class="bi bi-cloud-download" style="font-size: 24px"></i>
+                                                </h5>
+                                            </div>
+                                        </div>
+
+                                        <!--其他資訊之資料顯示處-->
+                                        <div class="row" id="m_console_Upper_Cont">
+                                            <div class="col">
+                                                <ul id="printInfo">
+                                                    <li>
+                                                        列印張數：
+                                                        @formData[i].Print_Num 張
+                                                    </li>
+
+                                                    <li>
+                                                        印製規格：@formData[i].Print_Size
+                                                    </li>
+
+                                                    <li>
+                                                        單雙面：@formData[i].Print_Side
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="col">
+                                                <ul id="add_on">
+                                                    <li>
+                                                        試卷袋：@formData[i].dis_add_Package
+                                                    </li>
+
+                                                    <li>
+                                                        考試答案卷：@formData[i].dis_add_AnswerPaper
+                                                    </li>
+
+                                                    <li>
+                                                        考試答案卷張數：@formData[i].add_AnsPaperNum
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="col">
+                                                <ul id="auth">
+                                                    <li>
+                                                        聯絡電話：@formData[i].phone
+                                                    </li>
+
+                                                    <li>
+                                                        領取日期時間：@formData[i].PickUp_Date  @formData[i].PickUp_Time
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="col">
+                                                <p class="form-control" id="memo">
+                                                    @formData[i].Memo
+                                                </p>
+                                            </div>
+
+                                            <div class="col">
+                                                @Html.ActionLink("檔案下載", "download_Files",
+                                                new { SID = formData[i].SID, Applytime = formData[i].Apply_Time, account = formData[i].account, name = formData[i].Name, method = "history" },
+                                                new { @class = "btn btn-primary", id = "print_btn", @style = "width: 100%; box-shadow: 0 0 1.8rem rgba(0, 0, 0, 0.15);" })
+                                            </div>
+                                        </div>
+
+                                        <!--手機板版面-->
+                                        <div id="m_console_xs">
+                                            <table class="table" style="width:100%; display: table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th id="modal_Sid">流水號</th>
+                                                        <td id="modal_Sid_Cont">@formData[i].SID</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th id="modal_ApplyDate">申請日期</th>
+                                                        <td id="modal_ApplyDate_Cont">@formData[i].Apply_Time</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th id="modal_Name">申請人</th>
+                                                        <td id="modal_Name_Cont">@formData[i].Name</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th id="modal_Department">系所名稱</th>
+                                                        <td id="modal_Department_Cont">@formData[i].department</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th id="modal_Subject">科目</th>
+                                                        <td id="modal_Subject_Cont">@formData[i].Subject</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th id="modal_Prt_Kind">印製種類</th>
+                                                        <td id="modal_Prt_Num_Cont">@formData[i].Print_Kind</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th id="modal_Status">申請狀態</th>
+                                                        <td id="modal_ApplyDate_Cont" style="color: red; font-weight: bold">@formData[i].status</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div id="m_console_Upper_xs">
+                                            <div class="row">
+                                                <h5>
+                                                    列印規格
+                                                </h5>
+                                            </div>
+                                            <div class="row">
+                                                <ul id="printInfo">
+                                                    <li>
+                                                        列印張數：
+                                                        @formData[i].Print_Num 張
+                                                    </li>
+
+                                                    <li>
+                                                        印製規格：@formData[i].Print_Size
+                                                    </li>
+
+                                                    <li>
+                                                        單雙面：@formData[i].Print_Side
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="row">
+                                                <h5>
+                                                    附加需求
+                                                </h5>
+                                            </div>
+                                            <div class="row">
+                                                <ul id="add_on">
+                                                    <li>
+                                                        試卷袋：@formData[i].dis_add_Package
+                                                    </li>
+
+                                                    <li>
+                                                        考試答案卷：@formData[i].dis_add_AnswerPaper
+                                                    </li>
+
+                                                    <li>
+                                                        考試答案卷張數：@formData[i].add_AnsPaperNum
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="row">
+                                                <h5>
+                                                    領取資訊
+                                                </h5>
+                                            </div>
+                                            <div class="row">
+                                                <ul id="auth">
+                                                    <li>
+                                                        聯絡電話：@formData[i].phone
+                                                    </li>
+
+                                                    <li>
+                                                        領取日期時間：@formData[i].PickUp_Date  @formData[i].PickUp_Time
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="row">
+                                                <h5>
+                                                    使用者備註
+                                                </h5>
+                                            </div>
+                                            <div class="row">
+                                                <p class="form-control" id="memo">
+                                                    @formData[i].Memo
+                                                </p>
+                                            </div>
+
+                                            <div class="row">
+                                                <h5>
+                                                    檔案下載處
+                                                    <i class="bi bi-cloud-download" style="font-size: 24px"></i>
+                                                </h5>
+                                            </div>
+                                            <div class="row">
+                                                @Html.ActionLink("檔案下載", "download_Files",
+                                                new { SID = formData[i].SID, Applytime = formData[i].Apply_Time, account = formData[i].account, name = formData[i].Name, method = "history" },
+                                                new { @class = "btn btn-primary", id = "print_btn", @style = "width: 100%; box-shadow: 0 0 1.8rem rgba(0, 0, 0, 0.15);" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <div class="row">
+                                            <div class="col">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </main>
+    </section>
+
+    <script src="~/Scripts/Admin/Console.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+</body>

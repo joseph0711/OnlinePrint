@@ -1,0 +1,121 @@
+﻿@using OnlinePrint.Service;
+@{ 
+    ViewBag.username = Session["username"];
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--font awesome v6.1.1 CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/Content/GlobalLayout.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/Layout.js"></script>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-dark navbar-fixed-top navbar-inverse navbar-expand-lg" style="background-color: #343A40">
+            <div class="container">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if ((string)Session["account"] != null & (string)Session["role"] == "User")
+                    {
+                        @Html.ActionLink("線上列印申請系統", "homepage", "home", null, new { @class = "header-content navbar-brand", @style = "color:white", id = "navbar" })
+                        <button class="navbar-toggler" id="navButton" type="button" data-toggle="collapse" data-target="#navBar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navBar">
+                            <ul class="navbar-nav " style="margin-right: auto">
+                                <li class="nav-item active">
+                                    <a class="header-collapse nav-link" href="@Url.Action("form", "apply")">列印申請 </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="header-collapse nav-link" href="@Url.Action("currenthistory", "home")">申請紀錄</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="header-collapse nav-link" href="@Url.Action("pasthistory", "home")">歷史紀錄</a>
+                                </li>
+                            </ul>
+
+                            <div class="header-collapse navbar-text" style="color: white; margin-right: 30px; font-size: 18px" id="info_Name">
+                                @ViewBag.username
+                            </div>
+                            <div class="navbar-btn">
+                                <input type="button" class="header-collapse btn btn-outline-warning" id="logout_Btn" value="登出" />
+                            </div>
+                        </div>
+                    }
+                    else if ((string)Session["account"] != null & (string)Session["role"] == "Admin")
+                    {
+                        @Html.ActionLink("線上列印申請系統", "homepage", "home", null, new { @class = "header-content navbar-brand", @style = "color:white", id = "navbar" })
+                        <button class="navbar-toggler" id="navButton" type="button" data-toggle="collapse" data-target="#navBar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navBar">
+                            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="@Url.Action("console", "admin")">申請單管理 </a>
+                                </li>
+
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="@Url.Action("history", "admin")">歷史紀錄 </a>
+                                </li>
+
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="@Url.Action("settings", "admin")">公佈欄設定 </a>
+                                </li>
+                            </ul>
+
+                            <div class="navbar-text" style="color: white; margin-right: 30px; font-size: 18px" id="info_Name">
+                                @ViewBag.username
+                            </div>
+
+                            <div class="navbar-btn">
+                                <input type="button" class="btn btn-outline-warning" id="logout_Btn" value="登出" onclick="location.href='@Url.Action("Logout", "Login")'" />
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    @Html.ActionLink("線上列印申請系統", "homepage", "home", null, new { @class = "header-content navbar-brand", @style = "color:white", id = "navbar" })
+                }
+            </div>
+        </nav>
+    </header>
+
+    @RenderBody()
+    @RenderSection("scripts", required: false)
+
+    <footer class="mt-auto text-center" style="background-color: #343A40">
+        <!-- Copyright -->
+        <div class="footer-content text-center p-3">
+            <span class="text-light">© 2022 Joseph Chiang</span>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+    <script>
+        $("#logout_Btn").click(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("logout", "login")',
+                success: function (msg) {
+                    document.location.href = '@Url.Action("login", "login")';
+                },
+                error: function () {
+                    alert('error');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

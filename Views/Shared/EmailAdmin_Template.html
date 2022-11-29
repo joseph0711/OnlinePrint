@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>新增申請需求單</title>
+</head>
+<body>
+    <div>
+        <p>
+            {{adminName}}管理員，您好：
+            <br />
+            系統已收到使用者的申請單，請盡速進入系統處理申請單！
+            <br />
+            以下為申請內容：
+        </p>
+        
+        <ul>
+            <li>
+                流水號：{{SID}}
+            </li>
+            <li>
+                申請時間：{{applyDate}}
+            </li>
+            <li>
+                申請人：{{name}}
+            </li>
+            <li>
+                連絡電話：{{phone}}
+            </li>
+
+            <li>
+                印製種類：{{print_Kind}}
+            </li>
+            <li>
+                預計領取日期和時間：{{pickUp_Date}} {{pickUp_Time}}
+            </li>
+        </ul>
+    </div>
+    
+</body>
+</html>

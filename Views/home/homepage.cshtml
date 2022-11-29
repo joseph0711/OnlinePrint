@@ -1,0 +1,23 @@
+﻿@model OnlinePrint.Models.BulletinBoardModel
+
+<head>
+    <title>
+        首頁 - 線上列印申請系統
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/Homepage/HomePage.css" rel="stylesheet" />
+    <script src="~/Scripts/Homepage/homepage.js"></script>
+</head>
+
+<body>
+    <div class="container side-collapse-container-left">
+        <div class="row">
+            <main class="el-main">
+                <input type="hidden" id="hdnToken" value="@ViewBag.Token" />
+                <div class="content" id="bulletin" style="background: #fff;">
+                    @Html.Raw(ViewBag.content)
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
