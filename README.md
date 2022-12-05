@@ -3,8 +3,8 @@
 
 ## 作品簡述
 
-線上列印系統針對校內教師在期中考、期末考及小考，透過本系統進行無紙化線上申請，並可透過表單來符合教師在考題上列印上的各式需求。行政人員亦可透過本系統來進行管理需求單，
-不僅比紙本申請更加效率，也更加容易控管。
+線上列印系統針對校內教師在期中考、期末考及小考，透過本系統進行無紙化線上申請，利用表單來符合教師在考題列印上的各式需求。行政人員亦可透過本系統來管理需求單，
+不僅比紙本申請更加效率，也更容易控管。
 
 ## 技術
 1. .NET framework 4.8 (MVC架構)
@@ -12,12 +12,12 @@
 3. Azure Blob：儲存各申請單之考卷檔案
 4. Azure App Services
 
-除了上述的技術框架外，也使用到Bootstrap模板、FontAwesome圖示以及JQuery函式庫。
+除了上述的技術框架外，也使用到Bootstrap模板、TinyMCE文字編輯器模板、FontAwesome圖示以及JQuery函式庫。
 
 ## 畫面展示說明
 <div>
-    <h3>登入身份</h3>
-    <p>分成一般身份及管理身份，配合Demo模式因此將登入匡列更改為點選按鈕，透過JS自動帶入使用者帳密</p>
+    <h3>登入頁面</h3>
+    <p>各分為一般身份及管理身份，配合Demo模式因此將登入匡列更改為點選按鈕，透過JavaScript自動帶入使用者帳密。</p>
     <img
         src="https://onlineprint.blob.core.windows.net/joseph/LoginPage.png?sp=r&st=2022-12-05T07:55:24Z&se=2023-12-05T15:55:24Z&spr=https&sv=2021-06-08&sr=b&sig=s%2BIxSUnhVcCYfc15Rs7inZm5jKPXPGZw1a1PdQGBGnI%3D">
 </div>
@@ -47,14 +47,14 @@
 
 <div>
     <h3>管理身分-申請單管理</h3>
-    <p>管理者可透過頁面來管理表單，並可對表單進行檔案下載、結單以及退回</p>
+    <p>管理者可透過頁面來管理表單，並可對表單進行檔案下載、結單以及退回。</p>
     <img
         src="https://onlineprint.blob.core.windows.net/joseph/%E7%AE%A1%E7%90%86%E7%AB%AF-%E7%94%B3%E8%AB%8B%E5%96%AE%E7%AE%A1%E7%90%862.png?sp=r&st=2022-12-05T08:44:52Z&se=2023-12-05T16:44:52Z&spr=https&sv=2021-06-08&sr=b&sig=4QzQ0U9DbNY4b0TfGkBdZUEubz8KYKAmr87quMAqIf8%3D">
 </div>
 
 <div>
     <h3>管理身分-歷史紀錄</h3>
-    <p>管理者可透過歷史紀錄頁面，來觀看所有<b>已結單或退回</b>之申請單</p>
+    <p>管理者可透過歷史紀錄頁面，來觀看所有<b>已結單或退回</b>之申請單。</p>
     <img
         src="https://onlineprint.blob.core.windows.net/joseph/%E7%AE%A1%E7%90%86%E7%AB%AF-%E6%AD%B7%E5%8F%B2%E7%B4%80%E9%8C%84.png?sp=r&st=2022-09-18T08:23:09Z&se=2023-09-17T16:23:09Z&spr=https&sv=2021-06-08&sr=b&sig=vpDaQPc51v%2BGLBi%2BsSpA7aQRo%2Bq3KuPyBreBAC4Ghq4%3D">
 </div>
