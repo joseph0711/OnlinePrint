@@ -49,7 +49,7 @@
     <h3>管理身分-申請單管理</h3>
     <p>管理者可透過頁面來管理表單，並可對表單進行檔案下載、結單以及退回</p>
     <img
-        src="https://onlineprint.blob.core.windows.net/joseph/%E7%AE%A1%E7%90%86%E7%AB%AF-%E7%94%B3%E8%AB%8B%E5%96%AE%E7%AE%A1%E7%90%86%E8%A9%B3%E7%B4%B0%E8%B3%87%E6%96%99.png?sp=r&st=2022-09-18T08:22:54Z&se=2023-09-17T16:22:54Z&spr=https&sv=2021-06-08&sr=b&sig=K7CkPkj4SCZy70pt5T72AUz07vnwuyVPiBdePcgI%2BG0%3D">
+        src="https://onlineprint.blob.core.windows.net/joseph/%E7%AE%A1%E7%90%86%E7%AB%AF-%E7%94%B3%E8%AB%8B%E5%96%AE%E7%AE%A1%E7%90%862.png?sp=r&st=2022-12-05T08:44:52Z&se=2023-12-05T16:44:52Z&spr=https&sv=2021-06-08&sr=b&sig=4QzQ0U9DbNY4b0TfGkBdZUEubz8KYKAmr87quMAqIf8%3D">
 </div>
 
 <div>
@@ -63,7 +63,7 @@
     <h3>管理身分-公佈欄設定</h3>
     <p>公布欄可依任何公告需求來調整內容，僅需要點選「公佈欄設定」即可進行更改，並可添加任何文字、媒體內容、修改文字格式……等。故此系統為配合Demo作品，因此暫不開放修改權限。</p>
     <img
-        src="https://onlineprint.blob.core.windows.net/joseph/%E7%AE%A1%E7%90%86%E7%AB%AF-%E5%85%AC%E4%BD%88%E6%AC%84%E8%A8%AD%E5%AE%9A.png?sp=r&st=2022-09-18T08:23:22Z&se=2023-09-17T16:23:22Z&spr=https&sv=2021-06-08&sr=b&sig=65I2Y5e781qvRBZ3Otlr6%2B%2BSQoYZqagIDljpexpyVYw%3D">
+        src="https://onlineprint.blob.core.windows.net/joseph/%E7%AE%A1%E7%90%86%E5%96%AE-%E5%85%AC%E4%BD%88%E6%AC%84%E8%A8%AD%E5%AE%9A.png?sp=r&st=2022-12-05T08:43:22Z&se=2023-12-05T16:43:22Z&spr=https&sv=2021-06-08&sr=b&sig=GgrKmTsW6hgHx0MsrXe9fCbvoe1VIpdLiOxBDrA82Z4%3D">
 </div>
 
 
