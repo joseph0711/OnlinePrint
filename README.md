@@ -10,7 +10,7 @@
 1. .NET framework 4.8 (MVC架構)
 2. Azure MS SQL：用以儲存學生資訊和申請單資訊
 3. Azure Blob：儲存各申請單之考卷檔案
-4. Azure App Service
+4. Azure App Services
 
 除了上述的技術框架外，也使用到Bootstrap模板、FontAwesome圖示以及JQuery函式庫。
 
