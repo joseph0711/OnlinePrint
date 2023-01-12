@@ -1,5 +1,5 @@
 # 線上列印系統
-作品Demo連結(網頁維護中，暫不對外開放)：~~https://onlineprint.azurewebsites.net/~~ 
+作品Demo連結：https://onlineprint.azurewebsites.net/
 
 ## 作品簡述
 
